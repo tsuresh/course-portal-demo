@@ -1,0 +1,36 @@
+# Click "Send Request" above each block (VS Code REST Client extension).
+# Change the port to 3001 for Fastify or 3002 for Hono.
+@base = http://localhost:3000
+
+### List all courses (GET, expect 200)
+GET {{base}}/api/courses
+
+### One course (GET, expect 200)
+GET {{base}}/api/courses/CS201
+
+### A course that does not exist (expect 404)
+GET {{base}}/api/courses/CS999
+
+### Enrol a student (POST, expect 201 Created)
+POST {{base}}/api/enrolments
+Content-Type: application/json
+
+{ "studentId": 42, "courseCode": "CS201" }
+
+### Same request again (expect 409 Conflict: already enrolled)
+POST {{base}}/api/enrolments
+Content-Type: application/json
+
+{ "studentId": 42, "courseCode": "CS201" }
+
+### Missing courseCode (expect 400 Bad Request)
+POST {{base}}/api/enrolments
+Content-Type: application/json
+
+{ "studentId": 42 }
+
+### List enrolments (GET)
+GET {{base}}/api/enrolments
+
+### Cancel an enrolment (DELETE, expect 204 No Content)
+DELETE {{base}}/api/enrolments/1001

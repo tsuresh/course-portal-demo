@@ -1,0 +1,25 @@
+{
+  "name": "course-portal-api",
+  "version": "1.0.0",
+  "description": "Sample REST API for the lecture: the same course enrolment backend in Express, Fastify and Hono",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch src/express-server.js",
+    "start": "node src/express-server.js",
+    "fastify": "node src/fastify-server.js",
+    "hono": "tsx src/hono-server.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.0",
+    "express": "^5.1.0",
+    "fastify": "^5.2.0",
+    "hono": "^4.7.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  }
+}
